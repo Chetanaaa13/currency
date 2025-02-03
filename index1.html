@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Currency Converter</title>
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
-            display: flex;
+            display: grid;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #e3f2fd;
-        }
-        .container {
+            background-color: #e3f2fd; /* Fallback color */
+            background-image: url("https://store.grantcardone.com/cdn/shop/products/Whos-Got-My-Money-Wallpaper-B.jpg?v=1638202361&width=1200"); /* Add the image path here */
+            background-size: cover; /* Make sure the image covers the entire screen */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Ensure the image doesn't repeat */
+        }       
+ .container {
             background: #ffffff;
             padding: 20px;
             border-radius: 10px;
@@ -52,32 +54,35 @@
     <div class="container">
         <h2>Currency Converter</h2>
         <input type="number" id="amount" placeholder="Enter amount" />
-        <select id="fromCurrency"></select>
-        <select id="toCurrency"></select>
+        <select id="fromCurrency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="JPY">JPY</option>
+            <option value="AUD">AUD</option>
+            <option value="CAD">CAD</option>
+            <option value="CHF">CHF</option>
+            <option value="CNY">CNY</option>
+            <option value="INR">INR</option>
+            <option value="BRL">BRL</option>
+        </select>
+        <select id="toCurrency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="JPY">JPY</option>
+            <option value="AUD">AUD</option>
+            <option value="CAD">CAD</option>
+            <option value="CHF">CHF</option>
+            <option value="CNY">CNY</option>
+            <option value="INR">INR</option>
+            <option value="BRL">BRL</option>
+        </select>
         <button onclick="convertCurrency()">Convert</button>
         <h3 id="result"></h3>
     </div>
 
     <script>
-        const currencies = ["USD", "EUR", "GBP", "JPY", "AUD", "CAD", "CHF", "CNY", "INR", "BRL"];
-        
-        function populateDropdowns() {
-            let fromSelect = document.getElementById("fromCurrency");
-            let toSelect = document.getElementById("toCurrency");
-            
-            currencies.forEach(currency => {
-                let option1 = document.createElement("option");
-                option1.value = currency;
-                option1.textContent = currency;
-                fromSelect.appendChild(option1);
-                
-                let option2 = document.createElement("option");
-                option2.value = currency;
-                option2.textContent = currency;
-                toSelect.appendChild(option2);
-            });
-        }
-
         async function convertCurrency() {
             let amount = document.getElementById("amount").value;
             let fromCurrency = document.getElementById("fromCurrency").value;
@@ -100,9 +105,6 @@
                 document.getElementById("result").style.color = "red";
             }
         }
-
-        populateDropdowns();
     </script>
 </body>
 </html>
-
